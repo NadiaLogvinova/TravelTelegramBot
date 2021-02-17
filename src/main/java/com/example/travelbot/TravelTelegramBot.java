@@ -18,6 +18,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class TravelTelegramBot extends TelegramWebhookBot {
 
     private static final String NO_INFO = "Нет информации";
+    private static final String START = "/start";
+    private static final String PRINT_CITY = "О каком городе хотите узнать?";
 
     private String webHookPath;
     private String botUserName;
@@ -58,13 +60,22 @@ public class TravelTelegramBot extends TelegramWebhookBot {
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         if (update.getMessage() != null && update.getMessage().hasText()) {
             long chat_id = update.getMessage().getChatId();
-            String city = update.getMessage().getText();
+            String inputMessage = update.getMessage().getText();
+            String responseMessage;
 
-            String info = cityInfoService.findInfoByCityIgnoreCase(city);
-            if (ObjectUtils.isEmpty(info)) info = NO_INFO;
+            if (START.equals(inputMessage)) {
+                responseMessage = PRINT_CITY;
+            } else {
+                String cityInfo = cityInfoService.findInfoByCityIgnoreCase(inputMessage);
+                if (ObjectUtils.isEmpty(cityInfo)) {
+                    responseMessage = NO_INFO;
+                } else {
+                    responseMessage = cityInfo;
+                }
+            }
 
             try {
-                execute(new SendMessage(Long.toString(chat_id), info));
+                execute(new SendMessage(Long.toString(chat_id), responseMessage));
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }

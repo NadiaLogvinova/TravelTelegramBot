@@ -1,0 +1,20 @@
+1) Telegram bot parameters. Use Name or userName to find it in Telegram.
+
+Name: ПакуйЧемодан
+
+userName = PackYourSuitcaseBot
+botToken = 1688828871:AAG5nj6K_sXNx0wLb-dcNxxugZWKU6mf_dU
+webHookPath = https://travel-bot-logvinova.herokuapp.com/
+
+2) Currently DB has 4 cities. You can get info about its via this telegram bot.
+
+Лондон
+Минск
+Москва
+Амстердам
+
+3) Also, use swagger UI to test REST API:
+   https://travel-bot-logvinova.herokuapp.com/swagger-ui.html
+
+4) GitHub project:
+   https://github.com/NadiaLogvinova/TravelTelegramBot

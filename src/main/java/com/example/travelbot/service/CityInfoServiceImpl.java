@@ -117,7 +117,9 @@ public class CityInfoServiceImpl implements CityInfoService {
     }
 
     private CityInfoTO convert(CityInfo cityInfo) {
-        CityInfoTO cityInfoTO = CityInfoTO.builder().city(cityInfo.getCity()).info(cityInfo.getInfo()).build();
+        CityInfoTO cityInfoTO = new CityInfoTO();
+        cityInfoTO.setCity(cityInfo.getCity());
+        cityInfoTO.setInfo(cityInfo.getInfo());
         return cityInfoTO;
     }
 }

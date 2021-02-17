@@ -1,7 +1,6 @@
 package com.example.travelbot.tranfserobject;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +13,6 @@ import javax.validation.constraints.NotBlank;
  */
 @Setter
 @Getter
-@Builder
 public class CityInfoTO {
 
     @NotBlank

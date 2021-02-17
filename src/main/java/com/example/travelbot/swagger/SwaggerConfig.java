@@ -15,7 +15,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
  * Swagger UI for provided REST API
- * http://localhost:8080/swagger-ui.html
+ * https://travel-bot-logvinova.herokuapp.com/swagger-ui.html
  *
  * @author n.logvinova
  */
