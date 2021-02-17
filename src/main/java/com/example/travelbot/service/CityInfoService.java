@@ -1,14 +1,17 @@
 package com.example.travelbot.service;
 
-import com.example.travelbot.model.CityInfo;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.travelbot.tranfserobject.CityInfoTO;
 
 
 public interface CityInfoService {
 
-    @Transactional(readOnly = true)
-    String findInfoByCityIgnoreCase(String city);
+    String findInfoByCityIgnoreCase(String cityName);
 
-    @Transactional
-    void deleteCityInfoByCity(String city);
+    void deleteCityInfoByCity(String cityName);
+
+    CityInfoTO createCityInfo(CityInfoTO cityInfoTO);
+
+    CityInfoTO getCityInfoTO(String cityName);
+
+    CityInfoTO updateCityInfo(String cityName, CityInfoTO cityInfoTO);
 }

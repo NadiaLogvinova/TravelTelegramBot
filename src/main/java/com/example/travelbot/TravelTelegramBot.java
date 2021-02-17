@@ -1,8 +1,8 @@
 package com.example.travelbot;
 
 import com.example.travelbot.service.CityInfoService;
-import com.example.travelbot.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
@@ -10,6 +10,11 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+/**
+ * My travel telegram bot.
+ *
+ * @author n.logvinova
+ */
 public class TravelTelegramBot extends TelegramWebhookBot {
 
     private static final String NO_INFO = "Нет информации";
@@ -42,6 +47,13 @@ public class TravelTelegramBot extends TelegramWebhookBot {
         return webHookPath;
     }
 
+    /**
+     * Telegram chat handling. A telegram bot user sends request with some city name
+     * and gets response with info about this city or message NO_INFO, if such city is not present in DB.
+     *
+     * @param update
+     * @return
+     */
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         if (update.getMessage() != null && update.getMessage().hasText()) {
@@ -49,7 +61,7 @@ public class TravelTelegramBot extends TelegramWebhookBot {
             String city = update.getMessage().getText();
 
             String info = cityInfoService.findInfoByCityIgnoreCase(city);
-            if (StringUtil.isStringEmpty(info)) info = NO_INFO;
+            if (ObjectUtils.isEmpty(info)) info = NO_INFO;
 
             try {
                 execute(new SendMessage(Long.toString(chat_id), info));

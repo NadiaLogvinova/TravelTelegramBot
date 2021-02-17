@@ -15,19 +15,22 @@ import org.telegram.telegrambots.meta.ApiContext;
 @Configuration
 @ConfigurationProperties(prefix = "telegrambot")
 public class BotConfig {
+
     private String webHookPath;
+
     private String botUserName;
+
     private String botToken;
 
     @Bean
-    public TravelTelegramBot myTravelTelegramBot() {
+    public TravelTelegramBot travelTelegramBot() {
         DefaultBotOptions options = ApiContext.getInstance(DefaultBotOptions.class);
 
-        TravelTelegramBot mySuperTelegramBot = new TravelTelegramBot(options);
-        mySuperTelegramBot.setBotUserName(botUserName);
-        mySuperTelegramBot.setBotToken(botToken);
-        mySuperTelegramBot.setWebHookPath(webHookPath);
+        TravelTelegramBot travelTelegramBot = new TravelTelegramBot(options);
+        travelTelegramBot.setBotUserName(botUserName);
+        travelTelegramBot.setBotToken(botToken);
+        travelTelegramBot.setWebHookPath(webHookPath);
 
-        return mySuperTelegramBot;
+        return travelTelegramBot;
     }
 }
