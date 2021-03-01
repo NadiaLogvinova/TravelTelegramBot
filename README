@@ -1,9 +1,9 @@
 1) Telegram bot parameters. Use Name or userName to find it in Telegram.
 
-Name: ПакуйЧемодан
+Name: ПакуйСвойЧемодан
 
-userName = PackYourSuitcaseBot
-botToken = 1688828871:AAG5nj6K_sXNx0wLb-dcNxxugZWKU6mf_dU
+userName = PackYourSuitcasesBot
+botToken = 1631591171:AAFotQUfJ_3nyYju5byUwcOVytxp_mOlYzc
 webHookPath = https://travel-bot-logvinova.herokuapp.com/
 
 2) Currently DB has 4 cities. You can get info about its via this telegram bot.
